@@ -14,6 +14,7 @@ Navigate to the frontendchallengeserver directory, install its dependencies, and
 In another terminal window, from the project root, start the React application with npm run dev. This will run on http://localhost:5173.
 
 How to Extend with New Data Sources
+
 The application is designed with extensibility in mind, allowing you to easily add new data sources:
 
 Define new data source types in the types file to maintain type safety.
@@ -22,7 +23,9 @@ Add a new tab in the DataSourceModal component to display and select from your n
 
 This approach lets you add new data sources without modifying the core application logic.
 Key Patterns to Pay Attention To
+
 Component Architecture
+
 The application follows a clean component hierarchy with clear separation of concerns:
 
 App.tsx: Main component managing application state
