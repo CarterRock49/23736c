@@ -22,6 +22,7 @@ Create provider functions that return your new data sources in the graph travers
 Add a new tab in the DataSourceModal component to display and select from your new data sources.
 
 This approach lets you add new data sources without modifying the core application logic.
+
 Key Patterns to Pay Attention To
 
 Component Architecture
