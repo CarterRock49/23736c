@@ -8,73 +8,19 @@ npm or yarn
 
 Setup
 
-Clone the repository:
-git clone https://github.com/your-username/23736c.git
-cd 23736c
-Install dependencies:
-npm install
-Start the mock server:
-cd frontendchallengeserver
-npm install
-npm start
-The server will run on http://localhost:3000
-Start the React application:
-cd ..
-npm run dev
-The application will run on http://localhost:5173
+Clone the repository, then navigate into the project directory.
+Install the project dependencies using npm install.
+Navigate to the frontendchallengeserver directory, install its dependencies, and start the mock server with npm start. This will run on http://localhost:3000.
+In another terminal window, from the project root, start the React application with npm run dev. This will run on http://localhost:5173.
 
 How to Extend with New Data Sources
 The application is designed with extensibility in mind, allowing you to easily add new data sources:
 
-Add a new data source type in the types file:
-In src/types/index.ts, extend the GlobalDataSource interface or add a new interface:
-export interface NewDataSource {
-  id: string;
-  name: string;
-  type: string;
-  // Add any additional properties needed
-}
+Define new data source types in the types file to maintain type safety.
+Create provider functions that return your new data sources in the graph traversal utility file.
+Add a new tab in the DataSourceModal component to display and select from your new data sources.
 
-Create a provider function for the new data source:
-In src/utils/graphTraversal.ts, add a new function to fetch your data source:
-
-export const getNewDataSources = (): NewDataSource[] => {
-  // Return your data sources
-  return [
-    { id: 'new_source_1', name: 'New Source 1', type: 'string' },
-    { id: 'new_source_2', name: 'New Source 2', type: 'number' }
-  ];
-};
-
-Add the new data source to the DataSourceModal:
-In src/components/DataSourceModal/DataSourceModal.tsx:
-
-// Add a new tab for your data source
-<button 
-  className={`tab-button ${activeTab === 'new_source' ? 'active' : ''}`}
-  onClick={() => setActiveTab('new_source')}
->
-  New Data Source
-</button>
-
-{/* Add the content for the new tab */}
-{activeTab === 'new_source' && (
-  <div>
-    <h4>New Data Sources</h4>
-    <ul className="field-list">
-      {getNewDataSources().map(source => (
-        <li 
-          key={source.id}
-          className="field-item"
-          onClick={() => onSelect('new_source', source.id)}
-        >
-          {source.name}
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
-
+This approach lets you add new data sources without modifying the core application logic.
 Key Patterns to Pay Attention To
 Component Architecture
 The application follows a clean component hierarchy with clear separation of concerns:
